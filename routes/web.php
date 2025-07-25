@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DepositsController;
 use App\Http\Controllers\BotsController;
 use App\Http\Controllers\MarketsController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,9 +20,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::get('/deposit', [DepositsController::class, 'index'])->name('deposit.create');
     Route::get('/markets', [MarketsController::class, 'index'])->name('markets.create');
+    Route::get('/bt-1', [MarketsController::class, 'bt1'])->name('running');
+    Route::get('/bt-2', [MarketsController::class, 'bt2'])->name('running2');
     Route::get('/bots', [BotsController::class, 'index'])->name('bots.create');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy'); 
+    Route::post('/api/update-wallet-balance', [WalletController::class, 'updateBalance']);
+    Route::get('/api/wallet-balance', [WalletController::class, 'getBalance']);
 });
 
 Route::get('/auth', function () {

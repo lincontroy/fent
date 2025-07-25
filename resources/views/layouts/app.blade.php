@@ -42,7 +42,7 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
-        <a href="#" class="nav-item active">🏠 Dashboard</a>
+        <a href="/dashboard" class="nav-item active">🏠 Dashboard</a>
         <a href="/markets" class="nav-item">📊 Markets</a>
         <a href="#" class="nav-item">⚡ Spot Trading</a>
         <a href="#" class="nav-item">⏰ Futures</a>

@@ -537,7 +537,7 @@
                         </div>
                         <div class="bot-actions">
                             <button class="bot-btn secondary">Configure</button>
-                            <button class="bot-btn primary">View Bot</button>
+                            <a href="/bt-1" class="bot-btn primary">Start</a>
                         </div>
                     </div>
 

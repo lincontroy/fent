@@ -384,11 +384,11 @@
                     <p class="hero-subtitle">Create and manage algorithmic trading strategies</p>
                     <div class="hero-stats">
                         <div class="stat">
-                            <div class="stat-number">20</div>
+                            <div class="stat-number">4</div>
                             <div class="stat-label">Total Bots</div>
                         </div>
                         <div class="stat">
-                            <div class="stat-number">1</div>
+                            <div class="stat-number">2</div>
                             <div class="stat-label">Active</div>
                         </div>
                         <div class="stat">
@@ -442,7 +442,11 @@
                         </div>
                         <div class="bot-actions">
                             <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary">View Bot</button>
+                          
+                                <a href="/bt-1" class="btn-primary" style="text-decoration: none;text-align: center;">Start BA Bot</a>
+                           
+
+
                         </div>
                     </div>
 
@@ -453,7 +457,7 @@
                                 <h3 class="bot-title">ETH DCA Pro</h3>
                                 <div class="bot-frequency">Daily • DCA</div>
                             </div>
-                            <span class="bot-status status-inactive">Inactive</span>
+                            <span class="bot-status status-active">Active</span>
                         </div>
                         <p class="bot-description">Dynamic DCA based on RSI and volume indicators</p>
                         <div class="bot-metrics">
@@ -468,7 +472,7 @@
                         </div>
                         <div class="bot-actions">
                             <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary">Configure & Run</button>
+                            <a href="/bt-2" class="btn-primary" style="text-decoration: none;text-align: center;">Start DCA pro</a>
                         </div>
                     </div>
 
@@ -479,7 +483,8 @@
                                 <h3 class="bot-title">Multi-Coin DCA</h3>
                                 <div class="bot-frequency">Monthly • DCA</div>
                             </div>
-                            <span class="bot-status status-configured">Configured</span>
+
+                            <span class="bot-status status-inactive">InActive</span>
                         </div>
                         <p class="bot-description">DCA into top 5 cryptocurrencies by market cap</p>
                         <div class="bot-metrics">
@@ -494,7 +499,8 @@
                         </div>
                         <div class="bot-actions">
                             <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary">Start Bot</button>
+                            <button type="button" class="btn-primary" disabled>Start Bot</button>
+
                         </div>
                     </div>
 
@@ -520,7 +526,8 @@
                         </div>
                         <div class="bot-actions">
                             <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary">Start Bot</button>
+                            <button type="button" class="btn-primary" disabled>Start Bot</button>
+
                         </div>
                     </div>
                 </div>

@@ -624,8 +624,8 @@
     <main class="main-content">
         <div class="bot-header">
             <div class="bot-info">
-                <h1 class="bot-title">Bitcoin Accumulation Bot</h1>
-                <div class="bot-details">Bot ID: dca-1 • • Account: Real</div>
+                <h1 class="bot-title">ETH DCA Pro</h1>
+                <div class="bot-details">Bot ID: dca-12 • • Account: Real</div>
             </div>
             <div class="status-section">
                 <div class="status-badge" id="statusBadge">

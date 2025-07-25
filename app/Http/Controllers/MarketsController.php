@@ -10,6 +10,12 @@ class MarketsController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function bt1(){
+        return view('running');
+    }
+    public function bt2(){
+        return view('running2');
+    }
     public function index()
     {
         //
