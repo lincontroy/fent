@@ -6,6 +6,7 @@ use App\Http\Controllers\BotsController;
 use App\Http\Controllers\MarketsController;
 use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -14,6 +15,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::post('api/process-card-payment', [PaymentController::class, 'processCardPayment']);
 
 Route::middleware('auth')->group(function () {
 
