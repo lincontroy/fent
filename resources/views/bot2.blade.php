@@ -667,7 +667,7 @@
                                 <h3 class="bot-title">Bitcoin Accumulation</h3>
                                 <div class="bot-frequency">Weekly • DCA</div>
                             </div>
-                            <span class="bot-status status-active">Active</span>
+                            <span class="bot-status status-inactive">Not Configured</span>
                         </div>
                         <p class="bot-description">Dollar-cost averaging into Bitcoin on a weekly basis</p>
                         <div class="bot-metrics">
@@ -677,12 +677,12 @@
                             </div>
                             <div class="metric">
                                 <div class="metric-label">Performance:</div>
-                                <div class="metric-value positive">+2.4%</div>
+                                <div class="metric-value">--</div>
                             </div>
                         </div>
                         <div class="bot-actions">
-                            <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary bot-start-btn" data-bot-type="bitcoin-accumulation">Start BA Bot</button>
+                            <button class="btn-secondary bot-configure-btn" data-bot-type="bitcoin-accumulation">Configure</button>
+                            <button class="btn-primary bot-start-btn" data-bot-type="bitcoin-accumulation" disabled>Start BA Bot</button>
                         </div>
                     </div>
 
@@ -692,7 +692,7 @@
                                 <h3 class="bot-title">ETH DCA Pro</h3>
                                 <div class="bot-frequency">Daily • DCA</div>
                             </div>
-                            <span class="bot-status status-active">Active</span>
+                            <span class="bot-status status-inactive">Not Configured</span>
                         </div>
                         <p class="bot-description">Dynamic DCA based on RSI and volume indicators</p>
                         <div class="bot-metrics">
@@ -702,12 +702,12 @@
                             </div>
                             <div class="metric">
                                 <div class="metric-label">Performance:</div>
-                                <div class="metric-value positive">+3.7%</div>
+                                <div class="metric-value">--</div>
                             </div>
                         </div>
                         <div class="bot-actions">
-                            <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary bot-start-btn" data-bot-type="eth-dca-pro">Start DCA Pro</button>
+                            <button class="btn-secondary bot-configure-btn" data-bot-type="eth-dca-pro">Configure</button>
+                            <button class="btn-primary bot-start-btn" data-bot-type="eth-dca-pro" disabled>Start DCA Pro</button>
                         </div>
                     </div>
 
@@ -717,7 +717,7 @@
                                 <h3 class="bot-title">Multi-Coin DCA</h3>
                                 <div class="bot-frequency">Monthly • DCA</div>
                             </div>
-                            <span class="bot-status status-inactive">Inactive</span>
+                            <span class="bot-status status-inactive">Not Configured</span>
                         </div>
                         <p class="bot-description">DCA into top 5 cryptocurrencies by market cap</p>
                         <div class="bot-metrics">
@@ -731,8 +731,8 @@
                             </div>
                         </div>
                         <div class="bot-actions">
-                            <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary" disabled>Start Bot</button>
+                            <button class="btn-secondary bot-configure-btn" data-bot-type="multi-coin-dca">Configure</button>
+                            <button class="btn-primary bot-start-btn" data-bot-type="multi-coin-dca" disabled>Start Bot</button>
                         </div>
                     </div>
 
@@ -742,7 +742,7 @@
                                 <h3 class="bot-title">Cycle-Based Accumulation</h3>
                                 <div class="bot-frequency">Weekly • DCA</div>
                             </div>
-                            <span class="bot-status status-inactive">Inactive</span>
+                            <span class="bot-status status-inactive">Not Configured</span>
                         </div>
                         <p class="bot-description">DCA more during market dips, less during highs</p>
                         <div class="bot-metrics">
@@ -756,8 +756,8 @@
                             </div>
                         </div>
                         <div class="bot-actions">
-                            <button class="btn-secondary">Configure</button>
-                            <button class="btn-primary" disabled>Start Bot</button>
+                            <button class="btn-secondary bot-configure-btn" data-bot-type="cycle-based">Configure</button>
+                            <button class="btn-primary bot-start-btn" data-bot-type="cycle-based" disabled>Start Bot</button>
                         </div>
                     </div>
                 </div>
@@ -799,7 +799,7 @@
 
                 <div class="modal-actions">
                     <button type="button" class="btn-cancel" id="cancelBtn">Cancel</button>
-                    <button type="submit" class="btn-start" id="submitBtn">Start Trading Bot</button>
+                    <button type="submit" class="btn-start" id="submitBtn">Save Configuration</button>
                 </div>
             </form>
         </div>
@@ -808,8 +808,6 @@
     <script>
         let currentBotType = '';
         let botConfigurations = {};
-        let performanceSimulationStarted = false;
-        let autoSaveTimeout;
 
         document.addEventListener('DOMContentLoaded', function() {
             initializeEventListeners();
@@ -819,14 +817,29 @@
         function initializeEventListeners() {
             console.log('Initializing event listeners...');
             
+            // Configure buttons
+            const configureButtons = document.querySelectorAll('.bot-configure-btn');
+            configureButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const botType = this.getAttribute('data-bot-type');
+                    console.log('Configure button clicked for bot type:', botType);
+                    openBotModal(botType);
+                });
+            });
+
+            // Start buttons
             const startButtons = document.querySelectorAll('.bot-start-btn');
-            console.log('Found start buttons:', startButtons.length);
-            
             startButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     const botType = this.getAttribute('data-bot-type');
                     console.log('Start button clicked for bot type:', botType);
-                    openBotModal(botType);
+                    
+                    if (this.disabled) {
+                        showError('Please configure the bot first before starting it.');
+                        return;
+                    }
+                    
+                    redirectToBotPage(botType);
                 });
             });
 
@@ -835,39 +848,38 @@
             const cancelBtn = document.getElementById('cancelBtn');
             const botConfigForm = document.getElementById('botConfigForm');
             
-            console.log('Form element found:', !!botConfigForm);
-            
             if (closeModalBtn) {
                 closeModalBtn.addEventListener('click', closeBotModal);
-                console.log('Close modal button listener attached');
             }
             
             if (cancelBtn) {
                 cancelBtn.addEventListener('click', closeBotModal);
-                console.log('Cancel button listener attached');
             }
             
-            // Form submission handler - Multiple approaches for reliability
+            // Form submission handler
             if (botConfigForm) {
-                console.log('Attaching form submission listener...');
+                console.log('Attaching form submission listeners...');
                 
-                // Method 1: Standard form submit event
-                botConfigForm.addEventListener('submit', function(e) {
-                    console.log('Form submission event triggered via addEventListener');
+                // Remove any existing listeners first
+                const newForm = botConfigForm.cloneNode(true);
+                botConfigForm.parentNode.replaceChild(newForm, botConfigForm);
+                
+                // Method 1: Form submit event
+                newForm.addEventListener('submit', function(e) {
+                    console.log('Form submit event triggered');
                     handleFormSubmission(e);
                 });
                 
-                // Method 2: Also attach to submit button click as backup
-                const submitBtn = document.getElementById('submitBtn');
+                // Method 2: Submit button click event as backup
+                const submitBtn = newForm.querySelector('#submitBtn');
                 if (submitBtn) {
-                    console.log('Submit button found, attaching click listener as backup');
+                    console.log('Submit button found, adding click listener');
                     submitBtn.addEventListener('click', function(e) {
-                        console.log('Submit button clicked directly');
-                        // Check if this is inside a form
-                        const form = this.closest('form');
-                        if (form) {
-                            console.log('Submit button is inside form, preventing default and handling manually');
+                        console.log('Submit button clicked');
+                        // If the button is of type submit, prevent default and handle manually
+                        if (this.type === 'submit' || this.closest('form')) {
                             e.preventDefault();
+                            e.stopPropagation();
                             handleFormSubmission(e);
                         }
                     });
@@ -875,7 +887,7 @@
                 
                 console.log('Form submission listeners attached successfully');
             } else {
-                console.error('botConfigForm not found!');
+                console.error('botConfigForm not found during initialization!');
             }
 
             // Modal click outside to close
@@ -895,25 +907,6 @@
                 if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
                     closeBotModal();
                 }
-                
-                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                    if (modal && modal.classList.contains('active')) {
-                        e.preventDefault();
-                        const form = document.getElementById('botConfigForm');
-                        if (form) {
-                            console.log('Ctrl+Enter pressed, submitting form');
-                            const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
-                            form.dispatchEvent(submitEvent);
-                        }
-                    }
-                }
-            });
-
-            // Auto-save handlers
-            const inputs = document.querySelectorAll('#botConfigForm input, #botConfigForm select');
-            inputs.forEach(input => {
-                input.addEventListener('input', autoSaveFormData);
-                input.addEventListener('change', autoSaveFormData);
             });
         }
 
@@ -929,50 +922,65 @@
             }
             
             if (title) {
-                if (botType === 'bitcoin-accumulation') {
-                    title.textContent = 'Configure Bitcoin Accumulation Bot';
-                    const assetSelect = document.getElementById('assetSelect');
-                    if (assetSelect) assetSelect.value = 'BTCUSDT';
-                } else if (botType === 'eth-dca-pro') {
-                    title.textContent = 'Configure ETH DCA Pro Bot';
-                    const assetSelect = document.getElementById('assetSelect');
-                    if (assetSelect) assetSelect.value = 'ETHUSDT';
+                const botTitles = {
+                    'bitcoin-accumulation': 'Configure Bitcoin Accumulation Bot',
+                    'eth-dca-pro': 'Configure ETH DCA Pro Bot',
+                    'multi-coin-dca': 'Configure Multi-Coin DCA Bot',
+                    'cycle-based': 'Configure Cycle-Based Accumulation Bot'
+                };
+                title.textContent = botTitles[botType] || 'Configure Trading Bot';
+                
+                // Pre-select appropriate asset
+                const assetSelect = document.getElementById('assetSelect');
+                if (assetSelect) {
+                    if (botType === 'bitcoin-accumulation') {
+                        assetSelect.value = 'BTCUSDT';
+                    } else if (botType === 'eth-dca-pro') {
+                        assetSelect.value = 'ETHUSDT';
+                    } else {
+                        assetSelect.value = '';
+                    }
                 }
             }
             
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             
-            // Re-attach form listener after modal opens (in case of dynamic content)
+            // Re-attach form listeners after modal opens to ensure they work
             setTimeout(() => {
                 const form = document.getElementById('botConfigForm');
-                console.log('Modal opened, form element check:', !!form);
-                
                 if (form) {
-                    // Remove any existing listeners to avoid duplicates
+                    console.log('Re-attaching form listeners after modal open');
+                    
+                    // Clear any existing listeners
                     const newForm = form.cloneNode(true);
                     form.parentNode.replaceChild(newForm, form);
                     
-                    // Re-attach the listener
+                    // Add submit event listener
                     newForm.addEventListener('submit', function(e) {
-                        console.log('Form submission event triggered (re-attached)');
+                        console.log('Form submit event (modal reattach)');
+                        e.preventDefault();
                         handleFormSubmission(e);
                     });
                     
-                    // Also re-attach submit button listener
-                    const submitBtn = newForm.querySelector('#submitBtn');
-                    if (submitBtn) {
-                        submitBtn.addEventListener('click', function(e) {
-                            console.log('Submit button clicked (re-attached)');
-                            if (e.target.type === 'submit') {
+                    // Add button click listener
+                    const submitButton = newForm.querySelector('#submitBtn');
+                    if (submitButton) {
+                        submitButton.addEventListener('click', function(e) {
+                            console.log('Submit button clicked (modal reattach)');
+                            const form = this.closest('form');
+                            if (form) {
                                 e.preventDefault();
-                                handleFormSubmission(e);
+                                const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+                                form.dispatchEvent(submitEvent);
                             }
                         });
                     }
+                    
+                    console.log('Form listeners reattached successfully');
+                } else {
+                    console.error('Form not found during modal reattach');
                 }
-                
-                restoreFormData();
             }, 100);
         }
 
@@ -995,11 +1003,9 @@
 
         function handleFormSubmission(e) {
             console.log("=== FORM SUBMISSION HANDLER CALLED ===");
-            console.log("Event type:", e.type);
-            console.log("Event target:", e.target);
-            console.log("Current bot type:", currentBotType);
-            
+            console.log("Event:", e);
             e.preventDefault();
+            e.stopPropagation();
             
             // Validate form before proceeding
             if (!validateForm()) {
@@ -1010,80 +1016,48 @@
             const assetSelect = document.getElementById('assetSelect');
             const investmentAmount = document.getElementById('investmentAmount');
             
-            console.log("Asset selected:", assetSelect ? assetSelect.value : 'NULL');
-            console.log("Investment amount:", investmentAmount ? investmentAmount.value : 'NULL');
+            console.log("Asset value:", assetSelect?.value);
+            console.log("Investment amount:", investmentAmount?.value);
             
             const formData = {
                 botType: currentBotType,
                 asset: assetSelect ? assetSelect.value : '',
                 investmentAmount: investmentAmount ? parseFloat(investmentAmount.value) : 0,
                 timestamp: new Date().toISOString(),
-                status: 'active'
+                status: 'configured'
             };
             
             console.log('Form data prepared:', formData);
             
+            // Store configuration
             botConfigurations[currentBotType] = formData;
+            console.log('Configuration stored for:', currentBotType);
             
             const submitBtn = document.getElementById('submitBtn');
 
             if (submitBtn) {
                 const originalText = submitBtn.textContent;
-                submitBtn.textContent = 'Starting Bot...';
+                submitBtn.textContent = 'Saving...';
                 submitBtn.disabled = true;
                 submitBtn.classList.add('loading');
+                console.log('Button state changed to saving...');
 
-                console.log("Starting Bot...");
-                
                 setTimeout(() => {
-                    updateBotStatus(currentBotType, 'active');
-                    showSuccessMessage(`${getBotDisplayName(currentBotType)} has been started successfully!`);
-                    
-                    // Determine bot page ID based on bot type
-                    let botPageId = '';
-                    switch(currentBotType) {
-                        case 'bitcoin-accumulation':
-                            botPageId = 'bt-1';
-                            break;
-                        case 'eth-dca-pro':
-                            botPageId = 'bt-2';
-                            break;
-                        case 'multi-coin-dca':
-                            botPageId = 'bt-3';
-                            break;
-                        case 'cycle-based':
-                            botPageId = 'bt-4';
-                            break;
-                        default:
-                            botPageId = 'bt-1';
-                    }
-                    
-                    // Redirect to the specific bot page with amount parameter
-                    const redirectUrl = `/${botPageId}?amount=${formData.investmentAmount}&asset=${formData.asset}`;
-                    console.log('Redirecting to:', redirectUrl);
-                    
-                    // Close modal first, then redirect
-                    closeBotModal();
-                    
-                    // Add a small delay to show success message before redirect
-                    setTimeout(() => {
-                        window.location.href = redirectUrl;
-                    }, 1000);
+                    console.log('Processing save...');
+                    // Update bot status to configured
+                    updateBotStatus(currentBotType, 'configured');
+                    showSuccessMessage(`${getBotDisplayName(currentBotType)} configuration saved successfully!`);
                     
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('loading');
                     
-                    updateDashboardStats();
+                    console.log('Save completed successfully');
                     
-                    if (!performanceSimulationStarted) {
-                        startPerformanceSimulation();
-                        performanceSimulationStarted = true;
-                    }
+                    // Close modal
+                    closeBotModal();
                     
                     console.log('Bot Configuration Saved:', formData);
-                    console.log('Redirecting to bot page:', botPageId);
-                    
                 }, 1500);
             } else {
                 console.error('Submit button not found!');
@@ -1116,7 +1090,16 @@
                 const statusElement = botCard.querySelector('.bot-status');
                 const startButton = botCard.querySelector('.bot-start-btn');
                 
-                if (status === 'active') {
+                if (status === 'configured') {
+                    if (statusElement) {
+                        statusElement.textContent = 'Configured';
+                        statusElement.className = 'bot-status status-configured';
+                    }
+                    if (startButton) {
+                        startButton.disabled = false;
+                        startButton.classList.remove('disabled');
+                    }
+                } else if (status === 'active') {
                     if (statusElement) {
                         statusElement.textContent = 'Active';
                         statusElement.className = 'bot-status status-active';
@@ -1130,10 +1113,61 @@
             }
         }
 
+        function redirectToBotPage(botType) {
+            console.log('Redirecting to bot page for:', botType);
+            
+            // Check if bot is configured
+            const config = botConfigurations[botType];
+            if (!config) {
+                showError('Bot is not configured. Please configure it first.');
+                return;
+            }
+            
+            // Determine bot page ID based on bot type
+            let botPageId = '';
+            switch(botType) {
+                case 'bitcoin-accumulation':
+                    botPageId = 'bt-1';
+                    break;
+                case 'eth-dca-pro':
+                    botPageId = 'bt-2';
+                    break;
+                case 'multi-coin-dca':
+                    botPageId = 'bt-3';
+                    break;
+                case 'cycle-based':
+                    botPageId = 'bt-4';
+                    break;
+                default:
+                    botPageId = 'bt-1';
+            }
+            
+            // Update status to active before redirect
+            updateBotStatus(botType, 'active');
+            
+            // Build redirect URL with parameters
+            const redirectUrl = `/${botPageId}?amount=${config.investmentAmount}&asset=${config.asset}&botType=${botType}`;
+            console.log('Redirecting to:', redirectUrl);
+            
+            // Show loading state on the button
+            const startButton = document.querySelector(`[data-bot-type="${botType}"].bot-start-btn`);
+            if (startButton) {
+                startButton.textContent = 'Starting...';
+                startButton.classList.add('loading');
+            }
+            
+            // Redirect after short delay
+            setTimeout(() => {
+                window.location.href = redirectUrl;
+            }, 1000);
+        }
+
         function getBotDisplayName(botType) {
             const names = {
                 'bitcoin-accumulation': 'Bitcoin Accumulation Bot',
-                'eth-dca-pro': 'ETH DCA Pro Bot'
+                'eth-dca-pro': 'ETH DCA Pro Bot',
+                'multi-coin-dca': 'Multi-Coin DCA Bot',
+                'cycle-based': 'Cycle-Based Accumulation Bot'
             };
             return names[botType] || 'Trading Bot';
         }
@@ -1181,14 +1215,6 @@
             }, duration);
         }
 
-        function updateDashboardStats() {
-            const activeBots = Object.keys(botConfigurations).length;
-            const activeBotElement = document.getElementById('activeBots');
-            if (activeBotElement) {
-                activeBotElement.textContent = activeBots;
-            }
-        }
-
         function addCardHoverEffects() {
             const botCards = document.querySelectorAll('.bot-card');
             botCards.forEach(card => {
@@ -1204,104 +1230,19 @@
             });
         }
 
-        function formatCurrency(amount) {
-            return new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0
-            }).format(amount);
-        }
-
-        function calculateROI(initialInvestment, currentValue) {
-            if (initialInvestment === 0) return 0;
-            return ((currentValue - initialInvestment) / initialInvestment * 100).toFixed(2);
-        }
-
-        function startPerformanceSimulation() {
-            setInterval(() => {
-                Object.keys(botConfigurations).forEach(botType => {
-                    const botCard = document.querySelector(`[data-bot-id="${botType}"]`);
-                    if (botCard) {
-                        const performanceElement = botCard.querySelector('.metric-value.positive');
-                        if (performanceElement) {
-                            const currentPerf = parseFloat(performanceElement.textContent.replace('%', ''));
-                            const change = (Math.random() - 0.5) * 0.2;
-                            const newPerf = Math.max(0, currentPerf + change);
-                            performanceElement.textContent = `+${newPerf.toFixed(1)}%`;
-                        }
-                    }
-                });
-            }, 30000);
-        }
-
-        function autoSaveFormData() {
-            clearTimeout(autoSaveTimeout);
-            autoSaveTimeout = setTimeout(() => {
-                const assetSelect = document.getElementById('assetSelect');
-                const investmentAmount = document.getElementById('investmentAmount');
-                
-                const formData = {
-                    asset: assetSelect ? assetSelect.value : '',
-                    investmentAmount: investmentAmount ? investmentAmount.value : ''
-                };
-                
-                window.tempFormData = formData;
-            }, 1000);
-        }
-
-        function restoreFormData() {
-            if (window.tempFormData) {
-                const data = window.tempFormData;
-                
-                const assetSelect = document.getElementById('assetSelect');
-                const investmentAmount = document.getElementById('investmentAmount');
-                
-                if (data.asset && assetSelect) assetSelect.value = data.asset;
-                if (data.investmentAmount && investmentAmount) investmentAmount.value = data.investmentAmount;
-            }
-        }
-
-        function getBotConfiguration(botType) {
-            return botConfigurations[botType] || null;
-        }
-
-        function getAllBotConfigurations() {
-            return botConfigurations;
-        }
-
-        function sendConfigurationToBackend(formData) {
-            // For Laravel integration:
-            /*
-            fetch('/api/bot-configuration', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('Configuration saved to backend:', data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                showError('Failed to save configuration to server');
-            });
-            */
-        }
-
-        // Global API
+        // Global API for external use
         window.TradingBotDashboard = {
             openModal: openBotModal,
             closeModal: closeBotModal,
-            getBotConfig: getBotConfiguration,
-            getAllConfigs: getAllBotConfigurations,
+            getBotConfig: function(botType) {
+                return botConfigurations[botType] || null;
+            },
+            getAllConfigs: function() {
+                return botConfigurations;
+            },
             showSuccess: showSuccessMessage,
             showError: showError,
-            formatCurrency: formatCurrency,
-            calculateROI: calculateROI
+            redirectToBot: redirectToBotPage
         };
 
         console.log('Trading Bot Dashboard script loaded successfully');

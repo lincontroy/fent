@@ -268,7 +268,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome to Fentibot</h1>
+            <h1>Welcome to FentiBot</h1>
             <p>Your trusted platform for cryptocurrency trading</p>
         </div>
 

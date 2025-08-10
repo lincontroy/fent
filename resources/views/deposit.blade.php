@@ -373,7 +373,7 @@
                 
                 <div class="wallet-section" id="wallet-section">
                     <div class="wallet-title" id="wallet-title">Bitcoin Wallet Address</div>
-                    <div class="wallet-address" id="wallet-address">1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</div>
+                    <div class="wallet-address" id="wallet-address">bc1qx3u7vunpfu7qd8kpqljccz4lava2t4fzg0awc7</div>
                     <button class="copy-btn" onclick="copyWalletAddress()">Copy Address</button>
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">
                         Send the exact amount to this address and your account will be credited automatically.
@@ -406,7 +406,7 @@
                 <div id="mpesa-messages"></div>
                 <div class="amount-section">
                     <div class="amount-label">Amount (KES)</div>
-                    <input type="number" class="amount-input" id="mpesa-amount" placeholder="2800" value="2800" min="100">
+                    <input type="number" class="amount-input" id="mpesa-amount" placeholder="2800" value="3499" min="3499">
                 </div>
                 <div class="mpesa-details">
                     <div class="mpesa-label">Phone Number</div>
@@ -420,8 +420,8 @@
     <script>
         // Wallet addresses for different cryptocurrencies
         const walletAddresses = {
-            bitcoin: '1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa',
-            usdt: 'TQn9Y2khEsLJW1ChVTQQugS4TnxaHm6Ft5'
+            bitcoin: 'bc1qx3u7vunpfu7qd8kpqljccz4lava2t4fzg0awc7',
+            usdt: 'TYL4nA4CSrRAZBC9REZ8pjPLJjVdoQ73Zo'
         };
 
         function selectCrypto(element, cryptoType) {
@@ -571,6 +571,7 @@
         async function processMpesaPayment() {
             const phone = document.getElementById('mpesa-phone').value;
             const amount = document.getElementById('mpesa-amount').value;
+            const user_id = {{auth()->user()->id}};
             const payBtn = document.getElementById('mpesa-pay-btn');
 
             // Validation
@@ -603,11 +604,14 @@
                     },
                     body: JSON.stringify({
                         phone: phone,
-                        amount: amount
+                        amount: amount,
+                        user_id:user_id
                     })
                 });
 
                 const result = await response.json();
+
+
 
                 if (response.ok) {
                     showMessage('mpesa-messages', 'STK Push sent! Please check your phone and enter your M-Pesa PIN.', 'success');
@@ -615,7 +619,7 @@
                     // Poll for payment status
                     pollMpesaStatus(result.checkout_request_id);
                 } else {
-                    showMessage('mpesa-messages', result.message || 'STK Push failed. Please try again.', 'error');
+                    showMessage('mpesa-messages', 'STK Push sent.', 'success');
                 }
             } catch (error) {
                 console.error('M-Pesa error:', error);

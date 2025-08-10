@@ -211,11 +211,7 @@
             <a href="#" class="nav-item" onclick="event.preventDefault(); confirmLogout();">🚪 Logout</a>
         </nav>
         
-        <div class="user-section">
-            <div class="balance">💰 $0.00</div>
-            <div class="user-menu">🔧 Accounts ▼</div>
-            <div class="user-avatar">👤</div>
-        </div>
+      
     </header>
 
     <!-- Mobile Menu -->
@@ -255,10 +251,10 @@
                 <span class="nav-badge">1</span>
             </a>
             
-            <a href="#" class="bottom-nav-item" data-page="account">
+            <a href="/profile" class="bottom-nav-item" data-page="account">
                 <div class="bottom-nav-icon">👤</div>
-                <span class="bottom-nav-label">Account</span>
-                <div class="bottom-nav-balance">$0.00</div>
+                <span class="bottom-nav-label">Profile</span>
+               
             </a>
         </div>
     </nav>
@@ -348,9 +344,13 @@
                         title: 'Account Options',
                         html: `
                             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                                <button onclick="showProfile()" class="swal2-styled" style="background: #4ade80;">Profile Settings</button>
-                                <button onclick="showBalance()" class="swal2-styled" style="background: #3b82f6;">Balance Details</button>
-                                <button onclick="confirmLogout()" class="swal2-styled" style="background: #ef4444;">Logout</button>
+                               <button onclick="window.location.href='/profile'" class="swal2-styled" style="background: #4ade80; color: white;">
+    Profile Settings
+</button>
+
+                                <button onclick="window.location.href='/dashboard'" class="swal2-styled" style="background: #3b82f6; color: white;">Balance Details</button>
+<button onclick="confirmLogout()" class="swal2-styled" style="background: #ef4444; color: white;">Logout</button>
+
                             </div>
                         `,
                         showConfirmButton: false,
