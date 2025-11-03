@@ -342,12 +342,33 @@
         <h1 class="main-title">Fund Your Account</h1>
         <p class="main-subtitle">Choose your preferred deposit method below</p>
         
-        <div class="deposit-form">
-            <div class="method-tabs">
-                <button class="method-tab active" id="crypto-tab">💰 Crypto</button>
-                <button class="method-tab" id="card-tab">💳 Card</button>
+        <div class="method-tabs">
+            <button class="method-tab active" id="crypto-tab">💰 Crypto</button>
+            <button class="method-tab" id="card-tab">💳 Card</button>
+            @if(Auth::check() && Auth::user()->country === 'Kenya')
                 <button class="method-tab" id="mpesa-tab">📱 Mpesa</button>
-            </div>
+            @endif
+        </div>
+        
+        <script>
+        // Alternative JavaScript-based approach if you prefer client-side detection
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get user's country from backend (assuming it's available in a data attribute or global variable)
+            const userCountry = '{{ Auth::check() ? Auth::user()->country : "" }}';
+            
+            // Or detect by timezone/locale (less reliable)
+            // const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            // const isKenya = userTimezone === 'Africa/Nairobi';
+            
+            const mpesaTab = document.getElementById('mpesa-tab');
+            
+            if (userCountry === 'Kenya' || userCountry === 'KE') {
+                mpesaTab.style.display = 'block';
+            } else {
+                mpesaTab.style.display = 'none';
+            }
+        });
+        </script>
             
             <!-- Crypto deposit form -->
             <div id="crypto-deposit-form">
@@ -368,12 +389,12 @@
                 
                 <div class="amount-section">
                     <div class="amount-label">Amount (USD)</div>
-                    <input type="number" class="amount-input" id="crypto-amount" placeholder="28" value="28" min="10">
+                    <input type="number" class="amount-input" id="crypto-amount" placeholder="49" value="49" min="49">
                 </div>
                 
                 <div class="wallet-section" id="wallet-section">
                     <div class="wallet-title" id="wallet-title">Bitcoin Wallet Address</div>
-                    <div class="wallet-address" id="wallet-address">bc1qx3u7vunpfu7qd8kpqljccz4lava2t4fzg0awc7</div>
+                    <div class="wallet-address" id="wallet-address">1G6JCuAX5JJubjFGpqDTjbhDsufaja4UUA</div>
                     <button class="copy-btn" onclick="copyWalletAddress()">Copy Address</button>
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">
                         Send the exact amount to this address and your account will be credited automatically.
@@ -386,7 +407,7 @@
                 <div id="card-messages"></div>
                 <div class="amount-section">
                     <div class="amount-label">Amount (USD)</div>
-                    <input type="number" class="amount-input" id="card-amount" placeholder="28" value="28" min="10">
+                    <input type="number" class="amount-input" id="card-amount" placeholder="49" value="49" min="49">
                 </div>
                 <div class="card-details">
                     <div class="card-label">Card Number</div>
@@ -406,7 +427,7 @@
                 <div id="mpesa-messages"></div>
                 <div class="amount-section">
                     <div class="amount-label">Amount (KES)</div>
-                    <input type="number" class="amount-input" id="mpesa-amount" placeholder="2800" value="3499" min="3499">
+                    <input type="number" class="amount-input" id="mpesa-amount" placeholder="6332" value="6332" min="6332">
                 </div>
                 <div class="mpesa-details">
                     <div class="mpesa-label">Phone Number</div>
@@ -420,8 +441,8 @@
     <script>
         // Wallet addresses for different cryptocurrencies
         const walletAddresses = {
-            bitcoin: 'bc1qx3u7vunpfu7qd8kpqljccz4lava2t4fzg0awc7',
-            usdt: 'TYL4nA4CSrRAZBC9REZ8pjPLJjVdoQ73Zo'
+            bitcoin: '1G6JCuAX5JJubjFGpqDTjbhDsufaja4UUA',
+            usdt: 'TQDjWrYtU7XoKBpr7h4LoDL67sv1E4u6Xs'
         };
 
         function selectCrypto(element, cryptoType) {
@@ -648,7 +669,7 @@
                         showMessage('mpesa-messages', 'Payment successful! Your account has been credited.', 'success');
                         // Reset form
                         document.getElementById('mpesa-phone').value = '';
-                        document.getElementById('mpesa-amount').value = '2800';
+                        document.getElementById('mpesa-amount').value = '6332';
                         return;
                     } else if (result.status === 'failed') {
                         showMessage('mpesa-messages', 'Payment failed or was cancelled.', 'error');
