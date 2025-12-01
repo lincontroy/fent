@@ -306,7 +306,16 @@
                 <div class="form-group signup-only hidden" id="phoneGroup">
                     <label class="form-label">Phone Number</label>
                     <div class="phone-input">
-                        <select class="country-code" name="country_code" required>
+                        <select class="country-code" name="country_code"
+                        style="
+                        width: 45%;              /* makes country input smaller */
+                        min-width: 140px;         /* prevents it from becoming tiny on mobile */
+                        padding: 10px;
+                        font-size: 14px;
+                        border: 1px solid #ccc;
+                        border-radius: 5px;
+                    "
+                        required>
                             <option value="+93">🇦🇫 Afghanistan (+93)</option>
                             <option value="+355">🇦🇱 Albania (+355)</option>
                             <option value="+213">🇩🇿 Algeria (+213)</option>
