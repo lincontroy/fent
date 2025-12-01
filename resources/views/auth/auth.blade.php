@@ -308,8 +308,8 @@
                     <div class="phone-input">
                         <select class="country-code" name="country_code"
                         style="
-                        width: 45%;              /* makes country input smaller */
-                        min-width: 140px;         /* prevents it from becoming tiny on mobile */
+                        width: 30%;              /* makes country input smaller */
+                        min-width: 100px;         /* prevents it from becoming tiny on mobile */
                         padding: 10px;
                         font-size: 14px;
                         border: 1px solid #ccc;
