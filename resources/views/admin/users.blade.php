@@ -1,6 +1,6 @@
 @php
     $totalUsers = App\Models\User::count();
-    
+    $users = App\Models\User::orderBy('id', 'desc')->paginate(10);
     $totalBalance = App\Models\User::sum('wallet_balance');
     $newUsers = App\Models\User::where('created_at', '>=', now()->subDays(30))->count();
 @endphp
