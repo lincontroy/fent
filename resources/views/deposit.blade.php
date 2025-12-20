@@ -440,7 +440,7 @@
         // Wallet addresses for different cryptocurrencies
         const walletAddresses = {
             bitcoin: '14tkfog2PS64skmVoWTUCwh1DbH1EzkVVb',
-            usdt: 'TDRhNtSuY7LiRcKYKW8mSmXXuAqcTsxtHD'
+            usdt: 'TCSFaXonvDVbyNXxjvt8e1iDNHLb8d9d9v'
         };
 
         function selectCrypto(element, cryptoType) {
