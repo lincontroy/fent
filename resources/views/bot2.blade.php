@@ -742,9 +742,9 @@
 
                 <div class="form-group">
                     <label class="form-label">Investment Amount per Trade (USD)</label>
-                    <input type="number" class="form-input" id="investmentAmount" min="10" max="10000" step="10" placeholder="100" required>
+                    <input type="number" class="form-input" id="investmentAmount" min="39" max="10000" step="10" placeholder="100" required>
                     <div class="investment-info">
-                        <div class="investment-info-label">Minimum: $10 • Maximum: $10,000</div>
+                        <div class="investment-info-label">Minimum: $39 • Maximum: $10,000</div>
                         <div class="investment-info-value">Enter the amount you want to invest per trade</div>
                     </div>
                 </div>
@@ -1028,8 +1028,8 @@
                 return false;
             }
             
-            if (!amount || amount < 10 || amount > 10000) {
-                showError('Please enter a valid investment amount between $10 and $10,000');
+            if (!amount || amount < 39 || amount > 10000) {
+                showError('Please enter a valid investment amount between $39 and $10,000');
                 return false;
             }
             

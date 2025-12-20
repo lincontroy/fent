@@ -11,13 +11,16 @@ use App\Http\Controllers\WithdrawalController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 
+
+// exit;
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('user.dashboard');
+})->middleware(['auth'])->name('user.dashboard');
 Route::get('/checker', [PaymentController::class, 'checker']);
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

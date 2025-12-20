@@ -6,95 +6,16 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <title>Fentibot - Advanced AI Trading Platform</title>
+  <title>Lotearn - Advanced AI Trading Platform</title>
   <meta name="description"
-    content="Experience the future of trading with Fentibot. Multiply your balance with AI-powered trading packages and real-time market analytics.">
+    content="Experience the future of trading with Lotearn. Multiply your balance with AI-powered trading packages and real-time market analytics.">
   <link rel="icon" type="image/png" href="https://apextraderplc.com/favicon.png">
   <link rel="apple-touch-icon" href="https://apextraderplc.com/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com/">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
 
-  <style>
-    /* Smooth scrolling for anchor links */
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Video section styling */
-    .video-container {
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .video-wrapper {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-    }
-    
-    .video-wrapper video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    
-    .video-container:hover .video-overlay {
-      opacity: 1;
-    }
-    
-    .play-button {
-      width: 80px;
-      height: 80px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-    
-    .play-button:hover {
-      transform: scale(1.1);
-      background: white;
-    }
-    
-    .play-icon {
-      width: 0;
-      height: 0;
-      border-top: 20px solid transparent;
-      border-left: 30px solid #000;
-      border-bottom: 20px solid transparent;
-      margin-left: 8px;
-    }
-    
-    .video-section {
-      scroll-margin-top: 100px;
-    }
-  </style>
+
+
 
   <link rel="stylesheet" crossorigin="" href="./apex_files/index-DwiSHkTJ.css">
 
@@ -105,23 +26,17 @@
     <div class="min-h-screen bg-background">
       <header class="border-b border-border/50 backdrop-blur-xl bg-background/95 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
-          <h2 class="text-primary flex items-center gap-3">Fentibot</h2>
-          <div class="flex items-center gap-3">
-            <a href="#how-it-works"
+          <div class="flex items-center gap-3">Lotearn</div>
+          <div class="flex items-center gap-3"><a href="/auth"
               class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover-elevate active-elevate-2 border border-transparent min-h-9 px-4 py-2"
-              data-testid="button-how-it-works">See How It Works</a>
-            <a href="/auth"
-              class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover-elevate active-elevate-2 border border-transparent min-h-9 px-4 py-2"
-              data-testid="button-signin-header">Sign In</a>
-            <a href="/auth"
+              data-testid="button-signin-header">Sign In</a><a href="/auth"
               class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-9 px-4 py-2 gap-2"
               data-testid="button-signup-header">Get Started<svg xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right h-4 w-4">
                 <path d="M5 12h14"></path>
                 <path d="m12 5 7 7-7 7"></path>
-              </svg></a>
-          </div>
+              </svg></a></div>
         </div>
       </header>
       <div class="bg-card/80 border-y border-border/50 backdrop-blur overflow-hidden">
@@ -298,34 +213,21 @@
             <div class="max-w-2xl space-y-4 md:space-y-6">
               <div
                 class="inline-block bg-primary/20 border border-primary/30 rounded-full px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm">
-                <span class="text-primary font-medium">Welcome to Fentibot</span></div>
+                <span class="text-primary font-medium">Welcome to Lotearn</span></div>
               <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-foreground">Grow Your
                 Wealth Faster</h1>
               <p class="text-base md:text-xl text-muted-foreground">Our platform uses AI-driven trading tech to maximize
                 your return on investment (ROI)—trusted by investors worldwide</p>
-              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 md:pt-4">
-                <a href="#how-it-works"
-                  class="inline-flex items-center justify-center whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-10 rounded-md gap-2 text-base md:text-lg h-12 md:h-14 px-6 md:px-8"
-                  data-testid="button-how-it-works-hero">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="lucide lucide-play h-4 md:h-5 w-4 md:w-5 mr-2">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                  </svg>
-                  See How It Works
-                </a>
-                <a href="/auth"
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 pt-2 md:pt-4"><a href="/auth"
                   class="inline-flex items-center justify-center whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-10 rounded-md gap-2 text-base md:text-lg h-12 md:h-14 px-6 md:px-8"
                   data-testid="button-signup">Get Started<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                     stroke-linejoin="round" class="lucide lucide-arrow-right h-4 md:h-5 w-4 md:w-5">
                     <path d="M5 12h14"></path>
                     <path d="m12 5 7 7-7 7"></path>
-                  </svg></a>
-                <a href="/auth"
+                  </svg></a><a href="/auth"
                   class="inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover-elevate active-elevate-2 border [border-color:var(--button-outline)] shadow-xs active:shadow-none min-h-10 rounded-md text-base md:text-lg h-12 md:h-14 px-6 md:px-8 bg-background/80 backdrop-blur"
-                  data-testid="button-signin">Sign In</a>
-              </div>
+                  data-testid="button-signin">Sign In</a></div>
             </div>
           </div>
         </div>
@@ -554,172 +456,6 @@
           </div>
         </div>
       </div>
-      
-      <section id="how-it-works" class="mobile-video-section w-full px-4 py-8">
-        <div class="text-center mb-6">
-          <div class="inline-block bg-primary/10 border border-primary/20 rounded-full px-3 py-1.5 text-sm mb-3">
-            <span class="text-primary font-medium">Mobile Demo</span>
-          </div>
-          <h2 class="text-2xl font-bold mb-2">See How It Works</h2>
-          <p class="text-gray-600 text-sm px-2">
-            Watch a mobile screen recording of our trading app in action.
-          </p>
-        </div>
-        
-        <!-- Simple mobile video player -->
-        <div class="w-full max-w-md mx-auto">
-          <div class="relative bg-black rounded-xl overflow-hidden">
-            <video 
-              id="mobile-video" 
-              controls 
-              playsinline
-              preload="metadata"
-              poster="/public/video-poster.jpg"
-              class="w-full h-auto"
-            >
-              <source src="tutorial.mp4" type="video/mp4">
-              <source src="tutorial.webm" type="video/webm">
-              Your browser doesn't support video.
-            </video>
-            
-            <!-- Simple play overlay -->
-            <div id="play-overlay" class="absolute inset-0 flex items-center justify-center bg-black/40">
-              <button 
-                id="play-btn" 
-                class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center"
-                aria-label="Play video"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-              </button>
-            </div>
-          </div>
-          
-          <div class="text-center mt-4 text-sm text-gray-500">
-            <p>Tap video to play/pause • Use controls to seek</p>
-          </div>
-        </div>
-        
-        <!-- Simple feature list -->
-        <div class="mt-8 space-y-4">
-          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-            <div class="bg-primary/10 p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"></path>
-                <path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-1">AI Analysis</h3>
-              <p class="text-sm text-gray-600">Smart analysis on mobile</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-            <div class="bg-primary/10 p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                <path d="M12 8V4H8"></path>
-                <rect width="16" height="12" x="4" y="8" rx="2"></rect>
-                <path d="M2 14h2"></path>
-                <path d="M20 14h2"></path>
-                <path d="M15 13v2"></path>
-                <path d="M9 13v2"></path>
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-1">Auto Trading</h3>
-              <p class="text-sm text-gray-600">Automated trades on your phone</p>
-            </div>
-          </div>
-          
-          <div class="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-            <div class="bg-primary/10 p-2 rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                <polyline points="16 7 22 7 22 13"></polyline>
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-1">Track Profits</h3>
-              <p class="text-sm text-gray-600">Monitor earnings in real-time</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      <script>
-      // Simple video control script
-      document.addEventListener('DOMContentLoaded', function() {
-        const video = document.getElementById('mobile-video');
-        const playBtn = document.getElementById('play-btn');
-        const overlay = document.getElementById('play-overlay');
-        
-        if (video && playBtn) {
-          // Play button click
-          playBtn.addEventListener('click', function() {
-            video.play();
-          });
-          
-          // Video events
-          video.addEventListener('play', function() {
-            overlay.style.display = 'none';
-          });
-          
-          video.addEventListener('pause', function() {
-            if (!video.ended) {
-              overlay.style.display = 'flex';
-            }
-          });
-          
-          video.addEventListener('ended', function() {
-            overlay.style.display = 'flex';
-            playBtn.innerHTML = `
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="white">
-                <path d="M12 5v14l7-7z"></path>
-                <path d="M5 5v14l7-7z"></path>
-              </svg>`;
-          });
-        }
-      });
-      </script>
-      
-      <style>
-      /* Simple mobile styles */
-      .mobile-video-section {
-        max-width: 100%;
-        margin: 0 auto;
-      }
-      
-      /* Make sure video fills container */
-      video {
-        display: block;
-        width: 100%;
-        height: auto;
-        max-height: 70vh;
-      }
-      
-      /* Touch-friendly controls */
-      #play-btn {
-        touch-action: manipulation;
-      }
-      
-      /* Hide overlay when video is playing */
-      #play-overlay {
-        transition: opacity 0.3s;
-      }
-      
-      /* Responsive text */
-      @media (max-width: 640px) {
-        h2 {
-          font-size: 1.5rem;
-        }
-        
-        p {
-          font-size: 0.875rem;
-        }
-      }
-      </style>
       <section class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <div class="relative order-2 lg:order-1"><img src="./apex_files/forex_trading_charts_a6d57715-Da9Q64vy.jpg"
@@ -958,7 +694,7 @@
       </section>
       <section class="max-w-7xl mx-auto px-4 md:px-8 py-12 md:py-20">
         <div class="text-center space-y-3 md:space-y-4 mb-8 md:mb-12">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold">Why Choose Fentibot?</h2>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold">Why Choose Lotearn?</h2>
           <p class="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">Experience the ultimate trading
             platform with cutting-edge features designed for your success.</p>
         </div>
@@ -1014,7 +750,7 @@
           class="shadcn-card rounded-xl bg-card text-card-foreground shadow-sm p-8 md:p-12 lg:p-16 text-center space-y-4 md:space-y-6 bg-gradient-to-br from-card to-card/50 border-2 border-primary/20">
           <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold">Ready to Start Trading?</h3>
           <p class="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">Join thousands of traders who are
-            already multiplying their portfolios with Fentibot.</p>
+            already multiplying their portfolios with Lotearn.</p>
           <div
             class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 pt-2 md:pt-4">
             <a href="/auth"
@@ -1033,8 +769,8 @@
         <div class="max-w-7xl mx-auto px-4 md:px-8 py-8">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2 text-muted-foreground">
-                Fentibot
-               <span>© 2020 Fentibot. All rights reserved.</span></div>
+                Lotearn
+               <span>© 2020 Lotearn. All rights reserved.</span></div>
           </div>
         </div>
       </footer>
@@ -1046,58 +782,6 @@
     </div>
   </div>
 
-  <script>
-    // Video play functionality
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.getElementById('platform-video');
-      const playButton = document.getElementById('play-button');
-      const videoOverlay = document.querySelector('.video-overlay');
-      
-      if (playButton && video) {
-        playButton.addEventListener('click', function() {
-          video.play();
-          videoOverlay.style.opacity = '0';
-        });
-        
-        video.addEventListener('play', function() {
-          videoOverlay.style.opacity = '0';
-        });
-        
-        video.addEventListener('pause', function() {
-          videoOverlay.style.opacity = '1';
-        });
-      }
-      
-      // Smooth scroll for the "See How It Works" button
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const href = this.getAttribute('href');
-          // if (href === '#how-it-works') {
-          //   e.preventDefault();
-          //   const element = document.querySelector(href);
-          //   if (element) {
-          //     const offset = 100;
-          //     const elementPosition = element.getBoundingClientRect().top;
-          //     const offsetPosition = elementPosition + window.pageYOffset - offset;
-              
-          //     window.scrollTo({
-          //       top: offsetPosition,
-          //       behavior: 'smooth'
-          //     });
-              
-          //     // Auto-play video when scrolled to section
-          //     setTimeout(() => {
-          //       if (video && !video.paused) return;
-          //       if (Math.abs(window.pageYOffset - offsetPosition) < 100) {
-          //         video.play();
-          //       }
-          //     }, 500);
-          //   }
-          // }
-        });
-      });
-    });
-  </script>
 
   <style>
     .tradingview-widget-copyright {

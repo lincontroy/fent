@@ -345,9 +345,7 @@
         <div class="method-tabs">
             <button class="method-tab active" id="crypto-tab">💰 Crypto</button>
             <button class="method-tab" id="card-tab">💳 Card</button>
-            @if(Auth::check() && Auth::user()->country === 'Kenya')
-                <button class="method-tab" id="mpesa-tab">📱 Mpesa</button>
-            @endif
+           
         </div>
         
         <script>
@@ -394,7 +392,7 @@
                 
                 <div class="wallet-section" id="wallet-section">
                     <div class="wallet-title" id="wallet-title">Bitcoin Wallet Address</div>
-                    <div class="wallet-address" id="wallet-address">1G6JCuAX5JJubjFGpqDTjbhDsufaja4UUA</div>
+                    <div class="wallet-address" id="wallet-address">bc1qx3u7vunpfu7qd8kpqljccz4lava2t4fzg0awc7</div>
                     <button class="copy-btn" onclick="copyWalletAddress()">Copy Address</button>
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: #9ca3af;">
                         Send the exact amount to this address and your account will be credited automatically.
@@ -441,8 +439,8 @@
     <script>
         // Wallet addresses for different cryptocurrencies
         const walletAddresses = {
-            bitcoin: '1G6JCuAX5JJubjFGpqDTjbhDsufaja4UUA',
-            usdt: 'TQDjWrYtU7XoKBpr7h4LoDL67sv1E4u6Xs'
+            bitcoin: '14tkfog2PS64skmVoWTUCwh1DbH1EzkVVb',
+            usdt: 'TDRhNtSuY7LiRcKYKW8mSmXXuAqcTsxtHD'
         };
 
         function selectCrypto(element, cryptoType) {

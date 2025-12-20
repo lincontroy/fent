@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fentibot - Your trusted platform for cryptocurrency trading</title>
+    <title>Lotearn - Your trusted platform for cryptocurrency trading</title>
     <style>
         * {
             margin: 0;
@@ -268,15 +268,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Welcome to Fentibot</h1>
+            <h1>Welcome to Lotearn</h1>
             <p>Your trusted platform for cryptocurrency trading</p>
-
-            <a href="{{ url('/') }}#how-it-works" class="see-how-it-works">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                See How It Works
-            </a>
         </div>
 
         <div class="auth-buttons">
@@ -298,8 +291,6 @@
             <h2 class="form-title" id="formTitle">Welcome back</h2>
             <p class="form-subtitle" id="formSubtitle">Enter your credentials to access your account</p>
 
-           
-
             <form method="POST" action="{{ route('login') }}" id="authForm">
                 @csrf
                 <div class="form-group signup-only hidden" id="nameGroup">
@@ -317,13 +308,14 @@
                     <div class="phone-input">
                         <select class="country-code" name="country_code"
                         style="
-                        width: 30%;              /* makes country input smaller */
-                        min-width: 100px;         /* prevents it from becoming tiny on mobile */
-                        padding: 10px;
-                        font-size: 14px;
-                        border: 1px solid #ccc;
-                        border-radius: 5px;
-                    "
+                            width: 30%;              /* makes country input smaller */
+                            min-width: 100px;         /* prevents it from becoming tiny on mobile */
+                            padding: 10px;
+                            font-size: 14px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                        "
+                        
                         required>
                             <option value="+93">🇦🇫 Afghanistan (+93)</option>
                             <option value="+355">🇦🇱 Albania (+355)</option>
